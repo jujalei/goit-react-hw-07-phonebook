@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
 
 const Wrapper = styled.div`
-  width: 350px;
+  max-width: 450px;
   margin-left: auto;
   margin-right: auto;
   margin-top: 40px;

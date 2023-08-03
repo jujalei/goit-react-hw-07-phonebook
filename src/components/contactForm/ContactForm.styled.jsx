@@ -14,7 +14,7 @@ const FormWrap = styled.form`
 
 const FormInput = styled.input`
   width: 100%;
-  height: 30px;
+  height: 35px;
   border-radius: 20px;
   background-color: #fcf3fb;
   margin-top: 5px;
@@ -29,7 +29,7 @@ const FormBtn = styled.button`
   border: none;
   border-radius: 20px;
   background-color: #f8cef6;
-  height: 30px;
+  height: 35px;
   transition: border 250ms linear;
 
   &:hover {

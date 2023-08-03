@@ -3,8 +3,8 @@ import { nanoid } from 'nanoid';
 
 import { FormWrap, FormInput, FormBtn } from './ContactForm.styled';
 import { useDispatch, useSelector } from 'react-redux';
-import { addContact } from 'redux/contactSlice';
 import { getContact } from 'redux/selectors';
+import { addContact } from 'redux/operations';
 
 export function ContactForm() {
   const [phone, setPhone] = useState('');

@@ -1,9 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { Filter } from '../filter/Filter';
 
-import { getContact, getFilter } from 'redux/selectors';
-
-import { deleteContact } from 'redux/contactSlice';
+import { getContact, getFilter, getIsLoading, getError } from 'redux/selectors';
 
 import {
   SubTitle,
@@ -12,11 +10,21 @@ import {
   DeleteBtn,
 } from './ContactList.styled';
 
+import { useEffect } from 'react';
+
+import { deleteContact, fetchContacts } from '../../redux/operations';
+
 export function ContactList() {
   const contacts = useSelector(getContact);
   const filter = useSelector(getFilter);
+  const isLoading = useSelector(getIsLoading);
+  const error = useSelector(getError);
 
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(fetchContacts());
+  }, [dispatch]);
 
   const filteredContacts =
     Array.isArray(contacts) && typeof filter === 'string'
@@ -31,6 +39,8 @@ export function ContactList() {
         <SubTitle>Contacts</SubTitle>
         <Filter />
         <ContactsList>
+          {isLoading && <p>Loading contacts...</p>}
+          {error && <p>{error}</p>}
           {filteredContacts.length > 0 ? (
             filteredContacts.map(contact => (
               <ListItem key={contact.id}>
